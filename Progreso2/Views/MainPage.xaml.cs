@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Progreso2.Models;
@@ -8,6 +7,8 @@ namespace Progreso2
 {
     public partial class MainPage : ContentPage
     {
+        private AllRecargas allRecargas = new AllRecargas();
+
         public MainPage()
         {
             InitializeComponent();
@@ -58,13 +59,22 @@ namespace Progreso2
 
         private async Task RealizarRecargaAsync(Recargas recarga)
         {
-            string contenido = $"Se hizo una recarga de {recarga.Monto} dólares en la siguiente fecha; {recarga.Fecha:dd/MM/yyyy}";
-
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), $"{recarga.NumeroTelefonico}.txt");
-
-            File.WriteAllText(path, contenido);
-
+            allRecargas.AddRecarga(recarga);
             await DisplayAlert("Recarga Exitosa", "Su recarga se ha realizado correctamente.", "OK");
+        }
+
+        private async void OnVerRegistroClicked(object sender, EventArgs e)
+        {
+            if (allRecargas.Recargas.Count > 0)
+            {
+                string contenido = string.Join(Environment.NewLine, allRecargas.Recargas
+                    .Select(r => $"Número: {r.NumeroTelefonico}, Operador: {r.Operador}, Monto: {r.Monto}, Fecha: {r.Fecha:dd/MM/yyyy}"));
+                await DisplayAlert("Registro de Recargas", contenido, "OK");
+            }
+            else
+            {
+                await DisplayAlert("Registro de Recargas", "No hay registros disponibles.", "OK");
+            }
         }
     }
 }
