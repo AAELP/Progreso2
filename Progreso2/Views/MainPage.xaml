@@ -1,0 +1,32 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Progreso2.Views.MainPage">
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="30">
+
+            <!-- Campo de entrada para el número telefónico -->
+            <Entry x:Name="ABTelefonoEntry" Placeholder="Ingrese su número telefónico" />
+
+            <!-- Selector de operador telefónico -->
+            <Picker x:Name="ABOperadorPicker" Title="Seleccione su operador">
+                <Picker.Items>
+                    <x:String>Operador 1</x:String>
+                    <x:String>Operador 2</x:String>
+                    <x:String>Operador 3</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!-- Opciones de monto de recarga -->
+            <StackLayout>
+                <Label Text="Seleccione el monto de recarga" />
+                <RadioButton x:Name="ABRecarga3" Content="3 dólares" GroupName="Recarga" CheckedChanged="OnRecargaChanged" />
+                <RadioButton x:Name="ABRecarga5" Content="5 dólares" GroupName="Recarga" CheckedChanged="OnRecargaChanged" />
+                <RadioButton x:Name="ABRecarga10" Content="10 dólares" GroupName="Recarga" CheckedChanged="OnRecargaChanged" />
+            </StackLayout>
+
+            <!-- Botón para realizar la recarga -->
+            <Button x:Name="ABRecargarButton" Text="Realizar Recarga" Clicked="OnRecargarClicked" />
+
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

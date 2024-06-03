@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Progreso2.Models
 {
-    internal class Recargas
+    public class Recargas
     {
         public string NumeroTelefonico { get; set; }
         public string Operador { get; set; }
