@@ -1,4 +1,7 @@
-﻿namespace Progreso2
+﻿using Microsoft.Maui.Controls;
+using Progreso2;
+
+namespace Progreso2
 {
     public partial class App : Application
     {
@@ -6,7 +9,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new MainPage();
         }
     }
 }

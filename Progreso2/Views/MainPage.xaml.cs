@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Progreso2.Models;
 
-namespace Progreso2.Views
+namespace Progreso2
 {
     public partial class MainPage : ContentPage
     {
